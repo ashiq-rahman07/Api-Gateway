@@ -1,14 +1,12 @@
-import axios, {AxiosInstance} from "axios";
+import axios, { AxiosInstance } from "axios";
 import config from "../config";
 
-
-
-const HttpService = (baseUrl: string):AxiosInstance =>{
+const HttpService = (baseUrl: string): AxiosInstance => {
     const instance = axios.create({
-        baseURL:baseUrl,
-        timeout:10000,
-        headers:{
-            'Content-Type':'application/json'
+        baseURL: baseUrl,
+        timeout: 10000,
+        headers: {
+            'Content-Type': 'application/json'
         }
     });
 
@@ -17,6 +15,7 @@ const HttpService = (baseUrl: string):AxiosInstance =>{
             return config
         },
         (error) => {
+            console.log(error)
             return error
         }
     );
@@ -26,9 +25,11 @@ const HttpService = (baseUrl: string):AxiosInstance =>{
             return response.data
         },
         (error) => {
+            console.log(error)
             return Promise.reject(error)
         }
     );
+
     return instance;
 }
 

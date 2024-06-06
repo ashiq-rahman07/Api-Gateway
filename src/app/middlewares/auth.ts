@@ -11,6 +11,7 @@ const auth =
         const token = req.headers.authorization;
 
         if (!token) {
+          
           return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Unauthorized'));
         }
 
